@@ -40,15 +40,15 @@ class RPSClient:
         while True:
             try:
                 result = self.s.recv(1024).decode()
-                print("Received from server:", result)  # Thêm dòng này để debug
+                print("Received from server:", result)
                 if result:
                     self.result_var.set(result)
                     # Hiển thị popup khi có kết quả
                     if "Result:" in result:
                         res = result.split("Result:")[1].strip()
-                        if "Player1 wins" in res or "Player2 loses" in res:
+                        if "Player1 wins" in res:
                             messagebox.showinfo("Kết quả", "Player1 thắng!")
-                        elif "Player2 wins" in res or "Player1 loses" in res:
+                        elif "Player2 wins" in res:
                             messagebox.showinfo("Kết quả", "Player2 thắng!")
                         elif "Draw" in res:
                             messagebox.showinfo("Kết quả", "Hai bên hòa!")
